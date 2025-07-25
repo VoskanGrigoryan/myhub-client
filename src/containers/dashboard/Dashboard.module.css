@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.mainBody {
+  background-color: var(--mantine-color-dark-7);
+  padding-top: 100px;
+}
