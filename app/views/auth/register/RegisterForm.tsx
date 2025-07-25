@@ -9,7 +9,10 @@ import Link from "next/link";
 
 const RegisterForm = () => {
   const handleGoogleSignIn = () => {
-    signIn("google", { callbackUrl: "/" });
+    signIn("google", {
+      prompt: "select_account",
+      callbackUrl: "/",
+    });
   };
 
   return (
@@ -19,7 +22,7 @@ const RegisterForm = () => {
         <Divider mb="md" mt="xs" />
         <GoogleButton onClick={handleGoogleSignIn} />
 
-        <Divider  mb="xs" mt="md" />
+        <Divider mb="xs" mt="md" />
         <Group gap={4}>
           <div>Have an account?</div>
           <Anchor component={Link} href="/views/auth/login" size="md">

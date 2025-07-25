@@ -9,7 +9,10 @@ import Link from "next/link";
 
 const LoginForm = () => {
   const handleGoogleSignIn = () => {
-    signIn("google", { callbackUrl: "/" });
+    signIn("google", {
+      prompt: "select_account",
+      callbackUrl: "/",
+    });
   };
 
   return (
