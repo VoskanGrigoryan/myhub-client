@@ -27,6 +27,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "app/views/auth/login}"  ],
   "exclude": ["node_modules"]
 }

@@ -1,9 +1,12 @@
 import GoogleProvider from "next-auth/providers/google";
-import NextAuth, {
+import {
   NextAuthOptions,
   SessionStrategy,
+  Account,
+  Profile,
+  Session,
+  User,
 } from "next-auth";
-import { Account, Profile, Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 
 export const authOptions: NextAuthOptions = {
@@ -49,7 +52,9 @@ export const authOptions: NextAuthOptions = {
               (user as any).isNewUser = backendData.isNewUser || false;
               return true;
             } else {
-              console.error("Backend did not return a token during Google login.");
+              console.error(
+                "Backend did not return a token during Google login."
+              );
               return false;
             }
           } else {
@@ -61,7 +66,10 @@ export const authOptions: NextAuthOptions = {
             return false;
           }
         } catch (error) {
-          console.error("Error integrating with backend for Google authentication:", error);
+          console.error(
+            "Error integrating with backend for Google authentication:",
+            error
+          );
           return false;
         }
       }
@@ -104,6 +112,7 @@ export const authOptions: NextAuthOptions = {
     },
 
     async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
+      console.log("urls", url, baseUrl);
       if (url.startsWith("/")) return `${baseUrl}${url}`;
       else if (new URL(url).origin === baseUrl) return url;
       return baseUrl;
@@ -114,11 +123,9 @@ export const authOptions: NextAuthOptions = {
 
   session: {
     strategy: "jwt" as SessionStrategy,
+    maxAge: 30 * 24 * 60 * 60,
+    updateAge: 24 * 60 * 60,
   },
 
-  debug: process.env.NODE_ENV === "development",
+  debug: false,
 };
-
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };

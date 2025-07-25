@@ -7,23 +7,23 @@ import { GoogleButton } from "@/src/assets/GoogleButton";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const handleGoogleSignIn = () => {
     signIn("google", { callbackUrl: "/" });
   };
 
   return (
-    <AuhtShell title={"Register"}>
-      <Card className={classes.registerCard} p={30}>
-        <Text fz={20}>New account</Text>
+    <AuhtShell title={"Login"}>
+      <Card className={classes.registerCard} p={20}>
+        <Text fz={20}>Login into account</Text>
         <Divider mb="md" mt="xs" />
         <GoogleButton onClick={handleGoogleSignIn} />
 
-        <Divider  mb="xs" mt="md" />
+        <Divider mb="xs" mt="md" />
         <Group gap={4}>
-          <div>Have an account?</div>
-          <Anchor component={Link} href="/views/auth/login" size="md">
-            Login
+          <div>Don't have an account?</div>
+          <Anchor component={Link} href="/views/auth/register" size="md">
+            Register
           </Anchor>
         </Group>
       </Card>
@@ -31,4 +31,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
