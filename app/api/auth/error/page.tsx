@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, Group, Stack, Text, Title } from "@mantine/core";
+import MyButton from "@/src/components/myComponents/MyButton";
+import { Group, Stack, Text, Title } from "@mantine/core";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
@@ -44,7 +45,7 @@ export default function AuthErrorPage() {
         <Title>Authentification error</Title>
         <Group justify="center">
             <Text>{message}</Text>
-            <Button onClick={() => router.push("/views/auth/login")}>Go back</Button>
+            <MyButton onClick={() => router.push("/views/auth/login")}>Go back</MyButton>
         </Group>
       </Stack>
     </div>
