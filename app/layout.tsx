@@ -6,6 +6,7 @@ import { createTheme, MantineProvider } from "@mantine/core";
 import { ReduxProvider } from "@/src/providers/ReduxProvider";
 import NextAuthSessionProvider from "@/src/providers/NextAuthSessionProvider";
 import GoogleAuthProvider from "@/src/providers/GoogleOAuthProvider";
+import { fetchMe } from "@/src/services/fetchMe";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -88,11 +89,14 @@ const theme = createTheme({
   },
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const user = await fetchMe();
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>

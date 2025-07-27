@@ -12,9 +12,9 @@
   background-color: var(--mantine-color-dark-7);
   border: 0px !important;
   color: white;
-  box-shadow: 10px 9px 15px -8px rgba(0, 0, 0, 0.63);
-  -webkit-box-shadow: 10px 9px 15px -8px rgba(0, 0, 0, 0.63);
-  -moz-box-shadow: 10px 9px 15px -8px rgba(0, 0, 0, 0.63);
+  box-shadow: 5px 9px 15px -8px rgba(13, 13, 13, 0.63);
+  -webkit-box-shadow: 5px 9px 15px -8px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 5px 9px 15px -8px rgba(0, 0, 0, 0.63);
 }
 
 .mainBody {
