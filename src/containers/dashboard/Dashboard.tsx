@@ -15,6 +15,8 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import MyButton from "@/src/components/myComponents/MyButton";
 import { useDisclosure } from "@mantine/hooks";
+import { logout } from "@/src/services/authService";
+import { useAuthStore } from "@/src/zustand/authStore";
 
 interface IContainerProps {
   children: React.ReactNode;
@@ -34,19 +36,16 @@ export function DashboardShell({ children, title }: IContainerProps) {
 
   const handleLogout = async () => {
     try {
-      await axios.post(
-        "http://localhost:8080/auth/logout",
-        {},
-        {
-          withCredentials: true, // SENDS COOKIE TO BACKEND
-        }
-      );
-
+      await logout();
       router.push("/views/auth/login");
     } catch (error) {
       console.error("Logout failed", error);
     }
   };
+
+  const user = useAuthStore((state) => state.user);
+
+  console.log(user)
 
   return (
     <AppShell
@@ -91,6 +90,7 @@ export function DashboardShell({ children, title }: IContainerProps) {
             {navbarOptions.map((item) => {
               return (
                 <MyButton
+                  key={item.text}
                   onClick={() => {
                     router.push(item.redirectUrl);
                   }}
@@ -118,7 +118,7 @@ export function DashboardShell({ children, title }: IContainerProps) {
                 handleLogout();
               }}
             >
-              Profile
+              {user?.name}
             </MyButton>
             <MyButton
               fullWidth
