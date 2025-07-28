@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import "@mantine/core/styles.css";
 import { createTheme, MantineProvider } from "@mantine/core";
 import { ReduxProvider } from "@/src/providers/ReduxProvider";
 import NextAuthSessionProvider from "@/src/providers/NextAuthSessionProvider";
 import GoogleAuthProvider from "@/src/providers/GoogleOAuthProvider";
 import { fetchMe } from "@/src/services/fetchMe";
+
+import "./globals.css";
+import "@mantine/core/styles.css";
+import '@mantine/charts/styles.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -103,7 +105,7 @@ export default async function RootLayout({
         <GoogleAuthProvider>
           <NextAuthSessionProvider>
             <ReduxProvider>
-              <MantineProvider theme={theme}>{children}</MantineProvider>
+              <MantineProvider theme={theme} defaultColorScheme="dark">{children}</MantineProvider>
             </ReduxProvider>
           </NextAuthSessionProvider>
         </GoogleAuthProvider>

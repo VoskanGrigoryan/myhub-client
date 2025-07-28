@@ -21,3 +21,9 @@
   background-color: var(--mantine-color-dark-6);
   color: white;
 }
+
+@media (max-width: 460px) {
+  .mainBody {
+    padding-top: 50px;
+  }
+}
