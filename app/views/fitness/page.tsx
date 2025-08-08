@@ -107,7 +107,7 @@ const data = normalizeData(rawData);
 const FitnessView = () => {
   return (
     <DashboardShell title={"Fitness"}>
-      <Grid>
+      <Grid className={classes.mainGrid}>
         <Grid.Col span={{ base: 12, md: 12 }}>
           <Paper className={classes.paper} shadow="lg">
             <Stack>

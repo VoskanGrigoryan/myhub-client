@@ -1,4 +1,10 @@
 .paper {
   padding: 12px;
-  color: black;
+  color: var(--mantine-color-dark-6);
+}
+
+@media(max-width: 768px) {
+  .mainGrid {
+    padding-top: 20px;
+  }
 }

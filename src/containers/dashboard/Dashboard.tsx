@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  AppShell,
-  Burger,
-  Code,
-  Group,
-  Text,
-} from "@mantine/core";
+import { AppShell, Burger, Code, Group, Stack, Text } from "@mantine/core";
 import {
   IconBodyScan,
   IconBook,
@@ -17,12 +11,11 @@ import {
 import classes from "./Dashboard.module.css";
 
 import { useRouter } from "next/navigation";
-import { useDisclosure } from "@mantine/hooks";
 import { logout } from "@/src/services/authService";
 import { useAuthStore } from "@/src/zustand/authStore";
-import { useState } from "react";
 import Image from "next/image";
 import TORCHLOGO from "../../../public/favicon.svg";
+import { useUIStore } from "@/src/zustand/uiStore";
 
 interface IContainerProps {
   children: React.ReactNode;
@@ -37,9 +30,10 @@ const navbarOptions = [
 
 export function DashboardShell({ children, title }: IContainerProps) {
   const router = useRouter();
-  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+
   const user = useAuthStore((state) => state.user);
-  const [active, setActive] = useState("");
+  const { navbarOpen, setNavbarOpen, selectedNavItem, setSelectedNavItem } =
+    useUIStore();
 
   const handleLogout = async () => {
     try {
@@ -53,13 +47,13 @@ export function DashboardShell({ children, title }: IContainerProps) {
   const links = navbarOptions.map((item) => (
     <a
       className={classes.link}
-      data-active={item.label === active || undefined}
+      data-active={item.label === selectedNavItem || undefined}
       href={item.link}
       key={item.label}
       onClick={(event) => {
         event.preventDefault();
+        setSelectedNavItem(item.label);
         router.push(item.link);
-        setActive(item.label);
       }}
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
@@ -72,7 +66,7 @@ export function DashboardShell({ children, title }: IContainerProps) {
       navbar={{
         width: 300,
         breakpoint: "sm",
-        collapsed: { mobile: !mobileOpened, desktop: false },
+        collapsed: { mobile: !navbarOpen, desktop: false },
       }}
       padding="md"
     >
@@ -80,11 +74,13 @@ export function DashboardShell({ children, title }: IContainerProps) {
         <Group justify="space-between" gap={0} style={{ width: "100%" }}>
           <Burger
             color="white"
-            opened={mobileOpened}
-            onClick={toggleMobile}
+            opened={navbarOpen}
+            onClick={() => {
+              setNavbarOpen(!navbarOpen);
+            }}
             size="sm"
           />
-          <Text ff={"monospace"} fw={100} fz={25}>
+          <Text ff={"monospace"} fw={100} fz={20}>
             {title}
           </Text>
         </Group>
@@ -93,12 +89,14 @@ export function DashboardShell({ children, title }: IContainerProps) {
       <AppShell.Navbar className={classes.navbar} withBorder={false}>
         <div className={classes.navbarMain}>
           <Group className={classes.header} justify="space-between">
-            {mobileOpened ? (
+            {navbarOpen ? (
               <Burger
                 hiddenFrom="sm"
                 color="white"
-                opened={mobileOpened}
-                onClick={toggleMobile}
+                opened={navbarOpen}
+                onClick={() => {
+                  setNavbarOpen(!navbarOpen);
+                }}
                 size="sm"
               />
             ) : (
@@ -110,7 +108,7 @@ export function DashboardShell({ children, title }: IContainerProps) {
               </>
             )}
           </Group>
-          <div style={{ marginTop: 10 }}>{links}</div>
+          <Stack style={{ marginTop: 10 }} gap={"xs"}>{links}</Stack>
         </div>
 
         <div className={classes.footer}>
