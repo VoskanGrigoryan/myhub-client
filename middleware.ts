@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("authToken")?.value;
   const { pathname } = request.nextUrl;
 
-  // ✅ Allow Next.js internals & static files
+  // Allow Next.js internals & static files
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/static") ||
@@ -15,6 +15,9 @@ export function middleware(request: NextRequest) {
   ) {
     return NextResponse.next();
   }
+
+  console.log('Middleware token:', token, 'path:', pathname);
+
 
   if (pathname.startsWith("/api/auth")) {
     return NextResponse.next();
