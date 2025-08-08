@@ -4,12 +4,12 @@
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: var(--mantine-color-indigo-6);
+  background-color: var(--mantine-color-blue-6);
   border: none;
 }
 
 .navbar {
-  background-color: var(--mantine-color-dark-7);
+  background-color: var(--mantine-color-light-1);
   border: 0px !important;
   color: white;
   box-shadow: 5px 9px 15px -8px rgba(13, 13, 13, 0.63);
@@ -18,7 +18,7 @@
 }
 
 .mainBody {
-  background-color: var(--mantine-color-dark-6);
+  background-color: var(--mantine-color-light-2);
   color: white;
 }
 

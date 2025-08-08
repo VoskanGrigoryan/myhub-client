@@ -10,7 +10,7 @@ interface MyButtonProps extends ButtonProps {
 const MyButton = ({
   children,
   variant = "filled",
-  color = "indigo",
+  color = "blue",
   onClick,
   ...props
 }: MyButtonProps) => {

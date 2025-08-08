@@ -45,8 +45,6 @@ export function DashboardShell({ children, title }: IContainerProps) {
 
   const user = useAuthStore((state) => state.user);
 
-  console.log(user)
-
   return (
     <AppShell
       navbar={{
@@ -72,7 +70,6 @@ export function DashboardShell({ children, title }: IContainerProps) {
       <AppShell.Navbar className={classes.navbar}>
         <AppShell.Section p="sm">
           <Group justify="space-between">
-            <Text size="xl">Menu</Text>
             <Burger
               hiddenFrom="sm"
               color="white"
@@ -82,11 +79,11 @@ export function DashboardShell({ children, title }: IContainerProps) {
             />
           </Group>
 
-          <Divider color={"dark"} my="xs" />
         </AppShell.Section>
 
-        <AppShell.Section grow px="sm">
+        <AppShell.Section grow px="8">
           <Stack gap={"sm"}>
+            
             {navbarOptions.map((item) => {
               return (
                 <MyButton
@@ -95,10 +92,12 @@ export function DashboardShell({ children, title }: IContainerProps) {
                     router.push(item.redirectUrl);
                   }}
                   justify="space-between"
-                  variant="filled"
-                  color="indigo"
-                  radius="xs"
+                  variant="subtle"
+                  color="blue.7"
+                  radius="sm"
+                  h={50}
                   rightSection={item.icon}
+                  size="md"
                 >
                   {item.text}
                 </MyButton>
@@ -108,10 +107,11 @@ export function DashboardShell({ children, title }: IContainerProps) {
         </AppShell.Section>
 
         <AppShell.Section p="md">
+          
           <Stack>
             <MyButton
               fullWidth
-              color="indigo"
+              color="blue"
               variant="filled"
               rightSection={<IconUser size={20} />}
               onClick={() => {
@@ -122,8 +122,8 @@ export function DashboardShell({ children, title }: IContainerProps) {
             </MyButton>
             <MyButton
               fullWidth
-              color="indigo"
-              variant="light"
+              color="blue"
+              variant="outline"
               rightSection={<IconLogout size={20} />}
               onClick={() => {
                 handleLogout();
