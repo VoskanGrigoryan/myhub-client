@@ -1,0 +1,8 @@
+.githubButton {
+  background-color: var(--mantine-color-dark-7);
+  color: #fff;
+}
+
+.githubButton:hover {
+  background-color: var(--mantine-color-dark-6);
+}

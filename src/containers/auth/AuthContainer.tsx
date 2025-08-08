@@ -1,17 +1,13 @@
-import { AppShell, Text } from "@mantine/core";
+import { AppShell } from "@mantine/core";
 import classes from "./Auth.module.css";
 
 interface IContainerProps {
   children: React.ReactNode;
-  title: string;
 }
 
-export function AuhtShell({ children, title }: IContainerProps) {
+export function AuhtShell({ children }: IContainerProps) {
   return (
-    <AppShell header={{ height: 60 }} padding="md">
-      <AppShell.Header className={classes.header}>
-        <Text ff={"monospace"} fw={100} fz={25}>{title}</Text>
-      </AppShell.Header>
+    <AppShell padding="md">
       <AppShell.Main className={classes.mainBody}>
         {children}
       </AppShell.Main>

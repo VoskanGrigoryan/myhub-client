@@ -45,7 +45,7 @@ export default function AuthErrorPage() {
         <Title>Authentification error</Title>
         <Group justify="center">
             <Text>{message}</Text>
-            <MyButton onClick={() => router.push("/views/auth/login")}>Go back</MyButton>
+            <MyButton onClick={() => router.push("/views/auth")}>Go back</MyButton>
         </Group>
       </Stack>
     </div>

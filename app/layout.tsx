@@ -8,7 +8,7 @@ import { fetchMe } from "@/src/services/fetchMe";
 
 import "./globals.css";
 import "@mantine/core/styles.css";
-import '@mantine/charts/styles.css';
+import "@mantine/charts/styles.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,69 +26,7 @@ export const metadata: Metadata = {
 };
 
 const theme = createTheme({
-  // color-6 is always the one from the original palette
-  colors: {
-    lightblue: [
-      "#E0F7FA",
-      "#B2EBF2",
-      "#80DEEA",
-      "#4DD0E1",
-      "#26C6DA",
-      "#00BCD4",
-      "#00ACC1",
-      "#0097A7",
-      "#00838F",
-      "#006064",
-    ],
-    blue: [
-      "#E3F2FD",
-      "#BBDEFB",
-      "#90CAF9",
-      "#64B5F6",
-      "#42A5F5",
-      "#2196F3",
-      "#1E88E5",
-      "#1976D2",
-      "#1565C0",
-      "#0D47A1",
-    ],
-    darkblue: [
-      "#E1EAF5",
-      "#B2C4DC",
-      "#839EC3",
-      "#5478AA",
-      "#265291",
-      "#1D3557",
-      "#162A47",
-      "#101F37",
-      "#0A1427",
-      "#050A17",
-    ],
-    light: [
-      "#FFFFFF",
-      "#F9FAFB",
-      "#F4F6F8",
-      "#EEF1F4",
-      "#E9EDF0",
-      "#F1FAEE",
-      "#DDE7E3",
-      "#CAD4D0",
-      "#B7C1BD",
-      "#A3AEAA",
-    ],
-    red: [
-      "#FDE0E3",
-      "#F9B3B9",
-      "#F5868F",
-      "#F15965",
-      "#ED2C3B",
-      "#E63946",
-      "#B53039",
-      "#85242B",
-      "#54191D",
-      "#240D0F",
-    ],
-  },
+  colors: {},
 });
 
 export default async function RootLayout({
@@ -96,7 +34,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   const user = await fetchMe();
 
   return (
@@ -105,7 +42,9 @@ export default async function RootLayout({
         <GoogleAuthProvider>
           <NextAuthSessionProvider>
             <ReduxProvider>
-              <MantineProvider theme={theme} defaultColorScheme="light">{children}</MantineProvider>
+              <MantineProvider theme={theme} defaultColorScheme="light">
+                {children}
+              </MantineProvider>
             </ReduxProvider>
           </NextAuthSessionProvider>
         </GoogleAuthProvider>

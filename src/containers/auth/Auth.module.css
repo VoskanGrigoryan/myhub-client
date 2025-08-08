@@ -6,9 +6,9 @@
 }
 
 .mainBody {
-    background-color: var(--mantine-color-blue-7);
+    background-color: var(--mantine-color-dark-7);
     justify-content: center;
-    align-items: top;
+    align-items: center;
     display: flex;
-    padding-top: 140px;
+    padding-bottom: 50px;
 }

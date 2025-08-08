@@ -1,22 +1,3 @@
-.header {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: var(--mantine-color-blue-6);
-  border: none;
-}
-
-.navbar {
-  background-color: var(--mantine-color-light-1);
-  border: 0px !important;
-  color: white;
-  box-shadow: 5px 9px 15px -8px rgba(13, 13, 13, 0.63);
-  -webkit-box-shadow: 5px 9px 15px -8px rgba(0, 0, 0, 0.63);
-  -moz-box-shadow: 5px 9px 15px -8px rgba(0, 0, 0, 0.63);
-}
-
 .mainBody {
   background-color: var(--mantine-color-light-2);
   color: white;
@@ -26,4 +7,89 @@
   .mainBody {
     padding-top: 50px;
   }
+}
+
+.navbar {
+  width: 300px;
+  padding: var(--mantine-spacing-md);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mantine-color-blue-filled);
+  height: 100%; /* Fill full navbar height */
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%;
+  }
+}
+
+.navbarMain {
+  flex: 1; /* Push footer to bottom */
+}
+
+.header {
+  padding: 10px;
+  background-color: var(--mantine-color-blue-filled);
+  border: none;
+  color: white;
+  border-bottom: 1px solid var(--mantine-color-blue-7);
+}
+
+.footer {
+  margin-top: auto; /* Stick footer at bottom */
+  padding-top: var(--mantine-spacing-md);
+  border-top: 1px solid var(--mantine-color-blue-7);
+}
+
+.headerNavbarMobile {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: var(--mantine-spacing-md);
+  margin-bottom: var(--mantine-spacing-md);
+  border-bottom: 1px solid var(--mantine-color-blue-7);
+}
+
+.version {
+  background-color: var(--mantine-color-blue-7);
+  color: var(--mantine-color-white);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: var(--mantine-font-size-sm);
+  color: var(--mantine-color-white);
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-sm);
+  font-weight: 500;
+}
+
+.link[data-active],
+.link[data-active]:hover {
+  box-shadow: var(--mantine-shadow-sm);
+  background-color: var(--mantine-color-white);
+  color: var(--mantine-color-blue-filled);
+}
+
+.link[data-active] .linkIcon {
+  color: var(--mantine-color-blue-filled);
+}
+
+.link:hover {
+  background-color: var(--mantine-color-blue-7);
+  color: var(--mantine-color-white);
+}
+
+.link:hover .linkIcon {
+  color: var(--mantine-color-white);
+}
+
+.linkIcon {
+  color: var(--mantine-color-blue-1);
+  margin-right: var(--mantine-spacing-sm);
+  width: 25px;
+  height: 25px;
 }
