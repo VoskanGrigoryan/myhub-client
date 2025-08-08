@@ -34,7 +34,7 @@ export function GoogleButton(
 ) {
   return (
     <Button leftSection={<GoogleIcon />} variant="default" {...props}>
-      Google
+      Continue with Google
     </Button>
   );
 }

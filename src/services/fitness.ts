@@ -9,3 +9,7 @@ export const getBodyCompositionEntries = async (): Promise<void> => {
   );
 };
 
+
+export const createBodyCompositionEntry = async (): Promise<any> => {
+  
+}
