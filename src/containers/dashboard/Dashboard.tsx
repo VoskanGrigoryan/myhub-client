@@ -24,7 +24,7 @@ interface IContainerProps {
 
 const navbarOptions = [
   { label: "Dashboard", icon: IconHome, link: "/" },
-  { label: "Body Composition", icon: IconBodyScan, link: "/views/fitness" },
+  { label: "Body Composition", icon: IconBodyScan, link: "/views/composition" },
   { label: "Literature", icon: IconBook, link: "/views/literature" },
 ];
 

@@ -6,7 +6,7 @@ const node_url = process.env.NEXT_PUBLIC_NODE_API_BASE_URL;
 //and dont want to make it a client side component
 export async function fetchMe() {
   const cookieStore = await cookies(); // gives you access to cookies on the server
-  const res = await fetch(`${node_url}/users/me`, {
+  const res = await fetch(`${node_url}/auth/me`, {
     headers: {
       Cookie: cookieStore.toString(), // SENDS COOKIES TO BACKEND
     },
@@ -22,10 +22,18 @@ export async function fetchMe() {
   return data;
 }
 
-// export async function fetchMe() {
-//   const response = await axios.get("http://localhost:8080/auth/me", {
-//     withCredentials: true, // SENDS COOKIE TO BACKEND
-//   });
+export async function fetchMeMiddleware(cookieHeader: string) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_NODE_API_BASE_URL}/auth/me`, {
+      method: "GET",
+      headers: { cookie: cookieHeader },
+      credentials: "include",
+    });
 
-//   return response.data;
-// }
+    if (!res.ok) return null;
+    return res.json();
+  } catch (err) {
+    console.error("fetchMeMiddleware error:", err);
+    return null;
+  }
+}

@@ -4,7 +4,6 @@ import { createTheme, MantineProvider } from "@mantine/core";
 import { ReduxProvider } from "@/src/providers/ReduxProvider";
 import NextAuthSessionProvider from "@/src/providers/NextAuthSessionProvider";
 import GoogleAuthProvider from "@/src/providers/GoogleOAuthProvider";
-import { fetchMe } from "@/src/services/fetchMe";
 
 import "./globals.css";
 import "@mantine/core/styles.css";
@@ -34,7 +33,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await fetchMe();
+  // const user = await fetchMe();
 
   return (
     <html lang="en">

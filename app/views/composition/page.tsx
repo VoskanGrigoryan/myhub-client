@@ -21,46 +21,6 @@ import MyButton from "@/src/components/myComponents/MyButton";
 
 const rawData = [
   {
-    month: "January",
-    bodyFat: 25,
-    muscleMass: 30,
-    boneMass: 13,
-    skinMass: 8,
-    residualMass: 24,
-  },
-  {
-    month: "February",
-    bodyFat: 24.8,
-    muscleMass: 30.5,
-    boneMass: 13,
-    skinMass: 8,
-    residualMass: 23.7,
-  },
-  {
-    month: "March",
-    bodyFat: 24.5,
-    muscleMass: 31,
-    boneMass: 13,
-    skinMass: 8,
-    residualMass: 23.5,
-  },
-  {
-    month: "April",
-    bodyFat: 24.2,
-    muscleMass: 31.5,
-    boneMass: 13,
-    skinMass: 8,
-    residualMass: 23.3,
-  },
-  {
-    month: "May",
-    bodyFat: 24,
-    muscleMass: 32,
-    boneMass: 13,
-    skinMass: 8,
-    residualMass: 23,
-  },
-  {
     month: "June",
     bodyFat: 23.8,
     muscleMass: 32.2,
@@ -78,7 +38,7 @@ const rawData = [
   },
 ];
 
-export const data2 = [
+const data2 = [
   { name: "USA", value: 400, color: "blue.6" },
   { name: "India", value: 300, color: "yellow.6" },
   { name: "Japan", value: 300, color: "teal.6" },
@@ -168,6 +128,8 @@ const FitnessView = () => {
                 ]}
                 rightSection={<IconCalendarMonth />}
               />
+
+              {/* MAKE THIS INTO A SINGLE REUSABLE INPUT */}
               <Grid>
                 <Grid.Col span={{ base: 12, md: 6 }}>
                   <Input
@@ -193,7 +155,6 @@ const FitnessView = () => {
                   />
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, md: 6 }}>
-                  {" "}
                   <Input
                     variant="filled"
                     placeholder="Skin"

@@ -1,35 +1,36 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { fetchMeMiddleware } from "./src/services/fetchMe";
 
-export function middleware(request: NextRequest) {
-  const token = request.cookies.get("authToken")?.value;
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Allow Next.js internals & static files
+  // static / next internals
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/static") ||
-    pathname.includes(".") || // .js, .css, .png, etc.
+    pathname.includes(".") ||
     pathname === "/favicon.ico" ||
     pathname === "/robots.txt"
   ) {
     return NextResponse.next();
   }
 
-  console.log('Middleware token:', token, 'path:', pathname);
-
-
+  // allow auth API routes
   if (pathname.startsWith("/api/auth")) {
     return NextResponse.next();
   }
 
   const isAuthPage = pathname === "/views/auth";
 
-  if (!token && !isAuthPage) {
+  const cookieHeader = request.headers.get("cookie") ?? "";
+  const user = await fetchMeMiddleware(cookieHeader);
+
+  if (!user && !isAuthPage) {
     return NextResponse.redirect(new URL("/views/auth", request.url));
   }
 
-  if (token && isAuthPage) {
+  if (user && isAuthPage) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 

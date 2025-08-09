@@ -26,7 +26,7 @@ export function useGoogleAuth() {
         const { user, isNewUser } = response.data;
         setUser(user, isNewUser);
 
-        await router.push("/");
+        router.push("/");
       } catch (error) {
         console.error("Login failed", error);
       }
